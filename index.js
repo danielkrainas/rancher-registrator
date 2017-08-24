@@ -93,7 +93,8 @@ function getHostContainers(hostUUID){
                 var output = {};
                 output.containers = JSON.parse(body).filter(
                     function(container) {
-                        return container.host_uuid == hostUUID;
+                        return container.host_uuid == hostUUID
+                          && container.labels['io.rancher.container.uuid'];
                     }
                 );
                 resolve(output);
